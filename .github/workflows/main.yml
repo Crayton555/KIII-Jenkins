@@ -39,3 +39,11 @@ jobs:
         uses: github/super-linter@v4.9.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker HUB
+        uses: docker/build-push-action@v2.10.0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: tomi/next
+          tags: latest, ${{ github.run_number }}
